@@ -1,0 +1,19 @@
+en:
+  admin:
+    navigation:
+      conference:
+        one: 'Conference'
+        plural: 'Confrence'
+        other: 'Conference'
+      conference_member:
+        one: 'Confrence member'
+        plural: 'Confrence member'
+        other: 'Conference members'
+      monograph:
+        one: 'Monograph'
+        plural: 'Monographs'
+        other: 'Monographs'
+      monograph_editor:
+        one: 'Monograph editor'
+        plural: 'Monograph editors'
+        other: 'Monograph editors'

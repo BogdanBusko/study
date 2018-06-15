@@ -1,0 +1,27 @@
+%main.main-container
+  .container
+    .row
+      %h1.title-wrapper Новини
+    - @news.each_slice(5) do |news|
+      .row
+        - news.first(3).each do |news_3|
+          .col-md-4.news-box
+            .box-item
+              %span.date
+                = news_3.created_at.strftime("%Y-%m-%d")
+              %span.title
+                = news_3.name
+              = link_to 'Читати далі...', news_url(news_3.id), class: 'about-link'
+      - if news.count > 3
+        .row
+          - news.last(2).each do |news_2|
+            .col-md-6.news-box
+              .box-item
+                %span.date
+                  = news_2.created_at.strftime("%Y-%m-%d")
+                %span.title
+                  = news_2.name
+                = link_to 'Читати далі...', news_url(news_2.id), class: 'about-link'
+    .row
+      %nav.pull-right
+        = will_paginate @news, {renderer: BootstrapPagination::Rails, previous_label: '<<', next_label: '>>'}

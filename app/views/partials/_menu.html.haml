@@ -1,0 +1,31 @@
+%section.academy-menu
+  .container
+    .main-logo
+      = link_to root_url do
+        = image_tag 'logo.png'
+    %nav.main-menu
+      %ul.main-menu-parent
+        %li.menu-parent
+          = link_to 'Новини', news_index_url
+        %li.menu-parent
+          %a{:alt => 'Конференції'}
+            Конференції
+            %i.fa.fa-chevron-down
+          %ul.main-menu-child
+            %li.menu-child
+              = link_to 'Майбутні', conferences_future_url
+            %li.menu-child
+              = link_to 'Проведені', conferences_ended_url
+        %li.menu-parent
+          %a{:alt => "Монографії"}
+            Монографії
+            %i.fa.fa-chevron-down{"aria-hidden" => "true"}
+          %ul.main-menu-child
+            %li.menu-child
+              = link_to 'Майбутні', monograph_future_url
+            %li.menu-child
+              = link_to 'Видані', monograph_ended_url
+        %li.menu-parent.contacts
+          = link_to 'Контакти', contacts_url
+    .mobile-bars
+      %i.fa.fa-bars{"aria-hidden" => "true"}

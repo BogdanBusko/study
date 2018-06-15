@@ -1,0 +1,88 @@
+%main.main-container
+  .container.text-center
+    .row
+      %h1 Майбутні конференції
+    - @conferences.each do |conference|
+      .content-conference-future
+        .row
+          .col-md-6.news-box
+            .box-item
+              %span.date файл PDF
+              %span.date UA
+              %span.title Інформаційне повідомлення
+              = link_to 'Завантажити', conference.file_ua_url, {class: 'about-link'}
+          .col-md-6.news-box
+            .box-item
+              %span.date file PDF
+              %span.date EN
+              %span.title Information message
+              = link_to 'Download', conference.file_en_url, {class: 'about-link'}
+        .row
+          .col-md-12.news-box.request-conferences
+            .box-item
+              %span.date
+                = conference.start_date
+              %span.title
+                = conference.name
+              = content_tag(:button, content_tag(:span, 'Зареєструватись на участь'), class:['js-request','about-link'], data: {id: conference.id.to_s})
+#js-modal-request.modal-request-conferences
+  #js-close-modal.close-modal
+    %span.glyphicon.glyphicon-remove
+  = form_with url: conference_registration_url, local: true do |f|
+    .group
+      = f.hidden_field :conference_id, id: 'object-id'
+      = f.text_field :first_name, { required: true }
+      %span.highlight
+      %span.bar
+      = f.label :first_name, 'Прізвище'
+    .group
+      = f.text_field :last_name, { required: true }
+      %span.highlight
+      %span.bar
+      = f.label :last_name, 'Імʼя'
+    .group
+      = f.text_field :surname, { required: true }
+      %span.highlight
+      %span.bar
+      = f.label :surname, 'По батькові'
+    .group
+      = f.select :academic_status, academic_status, prompt: 'Науковий ступінь'
+    .group
+      = f.select :scientific_degree, scientific_degree, prompt: 'Вчене звання'
+    .group
+      = f.text_field :position
+      %span.highlight
+      %span.bar
+      = f.label :position, 'Посада'
+    .group
+      = f.text_field :organization
+      %span.highlight
+      %span.bar
+      = f.label :organization, 'Організація'
+    .group
+      = f.text_field :contry, { required: true }
+      %span.highlight
+      %span.bar
+      = f.label :contry, 'Країна'
+    .group
+      = f.text_field :city, { required: true }
+      %span.highlight
+      %span.bar
+      = f.label :city, 'Місто'
+    .group
+      = f.text_field :address, { required: true }
+      %span.highlight
+      %span.bar
+      = f.label :address, 'Адреса'
+    .group
+      = f.text_field :phone, { required: true }
+      %span.highlight
+      %span.bar
+      = f.label :phone, 'Телефон'
+    .group
+      = f.text_field :email, { required: true }
+      %span.highlight
+      %span.bar
+      = f.label :email, 'E-mail'
+    .btn-box
+      = f.submit 'Відправити', { class: 'btn btn-submit' }

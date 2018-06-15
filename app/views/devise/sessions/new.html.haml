@@ -1,0 +1,15 @@
+.admin-login-form
+  %h2 Log in
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .group
+      = f.text_field :login, autofocus: true, required: true
+      %span.highlight
+      %span.bar
+      = f.label :login
+    .group
+      = f.password_field :password, required: true
+      %span.highlight
+      %span.bar
+      = f.label :password
+    .btn-box
+      = f.submit "Log in", { class: 'btn btn-submit' }

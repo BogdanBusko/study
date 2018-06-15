@@ -1,0 +1,16 @@
+%main.main-container
+  .container
+    - @monographs.each_slice(3) do |monographs|
+      .row
+        - monographs.each do |monograph|
+          .col-md-4.news-box
+            .box-item
+              %span.date
+                = monograph.authors
+              %span.date файл PDF
+              %span.title
+                = monograph.name
+              = link_to 'Завантажити', monograph.file_url, {class: 'about-link'}
+    .row
+      %nav.pull-right
+        = will_paginate @confereces, {renderer: BootstrapPagination::Rails, previous_label: '<<', next_label: '>>'}

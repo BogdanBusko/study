@@ -1,0 +1,2 @@
+module MonographsHelper
+end

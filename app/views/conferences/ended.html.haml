@@ -1,0 +1,27 @@
+%main.main-container
+  .container
+    .row
+      %h1.title-wrapper Проведені конференції
+    - @conferences.each_slice(5) do |conference_items|
+      .row
+        - conference_items.first(3).each do |conference|
+          .col-md-4.news-box
+            .box-item
+              %span.date
+                = conference.start_date
+              %span.title
+                = conference.name
+              = link_to 'Читати далі...', show_conference_url(conference.id), class: 'about-link'
+      - if conference_items.count > 3
+        .row
+          - conference_items.last(2).each do |conference|
+            .col-md-6.news-box
+              .box-item
+                %span.date
+                  = conference.start_date
+                %span.title
+                  = conference.name
+                = link_to 'Читати далі...', show_conference_url(conference.id), class: 'about-link'
+    .row
+      %nav.pull-right
+        = will_paginate @confereces, {renderer: BootstrapPagination::Rails, previous_label: '<<', next_label: '>>'}

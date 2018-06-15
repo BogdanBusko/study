@@ -1,0 +1,237 @@
+@import "vars"
+
+section.academy-menu
+  padding: 10px 0
+  background: #28282e
+  position: fixed
+  z-index: 300
+  width: 100%
+  top: 0
+  -webkit-transition: .4s
+  -o-transition: .4s
+  transition: 0.4s
+  &.active
+    background-color: rgba(35, 31, 32, 0.7)
+  div
+    &.container
+      display: table
+      text-align: center
+    &.main-logo
+      width: 30%
+      margin-right: 20px
+      display: table-cell
+      vertical-align: middle
+      text-align: left
+      a
+        color: #fff
+      img
+        height: 50px
+  nav.main-menu
+    display: table-cell
+    vertical-align: middle
+    text-align: center
+    ul
+      list-style-type: none
+      padding: 0
+      color: #fff
+      display: table
+      margin: auto
+      float: right
+      &.main-menu-parent li
+        display: inline-block
+        float: left
+        margin: 0 10px
+        font-size: 14px
+        padding: 0 0 5px
+        position: relative
+        a
+          color: #fff
+          display: block
+          width: 100%
+          height: 100%
+          cursor: pointer
+          i
+            margin-left: 5px
+            font-size: 12px
+        ul.main-menu-child
+          position: absolute
+          right: -9999px
+          opacity: 1
+          -webkit-transition: .25s linear opacity
+          background-color: #231f20
+          padding: 10px 0 5px 20px
+          margin-top: 5px
+          z-index: 0
+          li
+            float: right
+            margin: 0
+            padding: 0 10px 0 0
+            margin-bottom: 5px
+            width: 100%
+            text-align: right
+            -webkit-transition: .3s
+            -o-transition: .3s
+            transition: 0.3s
+            &.active
+              border-right: 5px solid #fff
+              padding: 0 5px 0 0
+              color: #bbb
+            a
+              -webkit-transition: .3s
+              -o-transition: .3s
+              transition: 0.3s
+            &.active a, &:hover a
+              color: #bbb
+            a
+              white-space: nowrap
+              display: block
+        &:hover ul
+          right: 0
+          opacity: 1
+          &:hover
+            right: 0
+            opacity: 1
+    > ul.main-menu-parent > li
+      &:before
+        content: ''
+        position: absolute
+        width: 100%
+        height: 0
+        border-bottom: 0 solid #fff
+        left: 0
+        bottom: 0
+        -webkit-transform: scaleX(0)
+        -ms-transform: scaleX(0)
+        transform: scaleX(0)
+        -webkit-transition: -webkit-transform .3s ease-in
+        -webkit-transition: .3s ease-in
+        -o-transition: .3s ease-in
+        transition: .3s ease-in
+        z-index: 2
+      &.active, &:hover:before
+        border-bottom: 1px solid #fff
+        -webkit-transform: scaleX(1)
+        -ms-transform: scaleX(1)
+        transform: scaleX(1)
+
+div.mobile-bars
+  display: none
+  vertical-align: middle
+  color: white
+  font-size: 30px
+  cursor: pointer
+  text-align: right
+  i
+    padding: 0 20px 0
+    box-sizing: border-box
+.contact
+  margin-right: 0!important
+@media (max-width: 1024px)
+  section.academy-menu
+    nav.main-menu
+      display: none
+  section.academy-mobile-menu div.mobile-bg
+    position: absolute
+    z-index: 999
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background: rgba(35, 31, 32, 0.7)
+    display: none
+
+  section.academy-mobile-menu div.mobile-menu
+    position: fixed
+    top: 0
+    right: -99999px
+    height: 100vh
+    background: #231f20
+    z-index: 1000
+    min-width: 320px
+
+    transition: $time-transition
+
+  section.academy-menu div.mobile-bars
+    display: table-cell
+
+
+  div.mobile-menu nav.main-menu ul li
+    color: white
+    list-style-type: none
+    cursor: pointer
+
+  div.mobile-menu nav.main-menu ul li a
+    color: white
+    margin-bottom: 5px
+    display: block
+
+
+  div.mobile-menu nav.main-menu ul li a i
+    padding-left: 10px
+    font-size: 14px
+
+
+  div.mobile-menu nav.main-menu ul.main-menu-parent
+    padding: 0
+    display: table
+    margin: 30px 0 0 30px
+    width: 100%
+
+  div.mobile-menu nav.main-menu ul li.menu-parent
+    padding-bottom: 10px
+
+
+  div.mobile-menu nav.main-menu ul li.menu-parent > a
+    margin-bottom: 10px
+
+  div.mobile-menu nav.main-menu ul li ul.main-menu-child li,
+  div.mobile-menu nav.main-menu ul li.menu-parent > a
+      transition: $time-transition
+
+
+  div.mobile-menu nav.main-menu ul > li > ul > li > a
+    background-color: #332e2f
+    padding: 5px 10px
+
+  div.mobile-menu nav.main-menu ul li.menu-parent.active > a,
+  div.mobile-menu nav.main-menu ul li.menu-parent > a:hover
+    border-left: 5px solid white
+    padding-left: 10px
+
+  div.mobile-menu nav.main-menu ul li ul.main-menu-child
+    padding: 0
+    display: none
+    transition: $time-transition
+
+  div.mobile-menu nav.main-menu ul li.show ul.main-menu-child
+    display: block
+
+  div.mobile-menu nav.main-menu ul li ul.main-menu-child li.active,
+  div.mobile-menu nav.main-menu ul li ul.main-menu-child li:hover
+    padding-left: 10px
+    border-left: 5px solid white
+
+  div.menu-close i
+    color: white
+    font-size: 30px
+    padding: 20px 10px
+    margin: 0 20px
+    box-sizing: border-box
+    cursor: pointer
+
+
+@media (max-width: 655px)
+  section.academy-menu div
+    &.main-logo
+      width: auto
+      display: inline-block
+      span
+        display: none
+    &.container
+      width: 100%
+      padding-left: 0
+      padding-right: 0
+    &.mobile-bars
+      padding-right: 20px

@@ -1,0 +1,54 @@
+%main.main-container
+  .container
+    %h1.text-center Формування авторського колективу
+    - @monographs.each_slice(3) do |monographs|
+      .row
+        - monographs.each do |monograph|
+          .col-md-4.news-box
+            .box-item.show-monographs
+              .js-element-id{hidden: ""}
+                = monograph.id
+              %span.date
+                Редактори:
+                = monograph.authors
+              %span.date
+                = monograph.author_email
+              %span.title
+                = monograph.name
+              = content_tag(:button, content_tag(:span, 'Заявка'), class:['js-request','about-link'], data: {id: monograph.id.to_s})
+#js-modal-request.modal.modal-request-monographs
+  #js-close-modal.close-modal
+    %span.glyphicon.glyphicon-remove
+  = form_with url: monograph_registration_url, local: true do |f|
+    %h3.title-form Заявка
+    .group
+      = f.hidden_field :monograph_id, id: 'object-id'
+      = f.text_field :first_name, { required: true }
+      %span.highlight
+      %span.bar
+      = f.label :first_name, 'Прізвище'
+    .group
+      = f.text_field :last_name, { required: true }
+      %span.highlight
+      %span.bar
+      = f.label :second, 'Імʼя'
+    .group
+      = f.text_field :surname, { required: true }
+      %span.highlight
+      %span.bar
+      = f.label :surname, 'По батькові'
+    .group
+      = f.text_field :phone, { required: true }
+      %span.highlight
+      %span.bar
+      = f.label :phone, 'Телефон'
+    .group
+      = f.text_field :email, { required: true }
+      %span.highlight
+      %span.bar
+      = f.label :email, 'E-mail'
+    .btn-box
+      = f.submit 'Відправити', class: 'btn btn-submit', id: 'save'
+  .row
+    %nav.pull-right
+      = will_paginate @confereces, {renderer: BootstrapPagination::Rails, previous_label: '<<', next_label: '>>'}

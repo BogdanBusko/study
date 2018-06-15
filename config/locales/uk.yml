@@ -1,0 +1,22 @@
+uk:
+  admin:
+    navigation:
+      conference:
+        one: 'Конференція'
+        plural: 'Конференції'
+        other: 'Конференцій'
+      conference_member:
+        one: 'Учасник конференції'
+        plural: 'Учасники конференцій'
+        other: 'Учасники конференції'
+      monograph:
+        one: 'Монографія'
+        plural: 'Монографії'
+        other: 'Монографій'
+      monograph_editor:
+        one: 'Редактор монографії'
+        plural: 'Редакстори монографій'
+        other: 'Редакторів монографій'
+      section:
+        one: 'Секція'
+        other: 'Секції'

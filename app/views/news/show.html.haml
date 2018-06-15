@@ -1,0 +1,12 @@
+.container
+  .row
+    .col-xs-12
+      %h1.title__item-news
+        = @news.name
+      -# .image__item-news
+        %img.img-responsive{:alt => "", :src => "img/slider/1.jpg"}/
+      %span.date__item-news
+        = @news.created_at.strftime("%Y-%m-%d")
+      .text-container__item-news
+        %p
+          = @news.description

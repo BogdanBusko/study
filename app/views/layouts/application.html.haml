@@ -1,0 +1,26 @@
+= content_for body_class: 'home'
+
+!!!
+%html
+  %head
+    %meta{content: 'text/html; charset=UTF-8; IE=edge', 'http-equiv' => 'X-UA-Compatible'}/
+    %title Home
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1'}
+
+    %link{rel: 'shortcut-icon', href: 'favicon.ico', type: 'image/x-icon'}
+    %link{rel: 'beard-icon', href: 'beard.png'}
+    %link{rel: 'beard-icon', sizes: '72x72', href: 'beard-72.png'}
+    %link{rel: 'beard-icon', sizes: '114x114', href: 'beard-114.png'}
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all'
+    = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600'
+    = javascript_include_tag "application"
+    = javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=false"
+  %body{class: yield(:body_class)}
+    = render 'partials/menu'
+    - if request.url != root_url
+      .wrapper
+        = yield
+        = render 'partials/footer' if request.url != root_url
+    = yield if request.url == root_url
+    #opacity-bg

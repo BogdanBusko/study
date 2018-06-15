@@ -1,0 +1,29 @@
+development:
+  clients:
+    default:
+      database: academy_alpha_development
+      hosts:
+        - localhost:27017
+      options:
+  options:
+test:
+  clients:
+    default:
+      database: academy_alpha_test
+      hosts:
+        - localhost:27017
+      options:
+        read:
+          mode: :primary
+        max_pool_size: 1
+production:
+  clients:
+    default:
+      uri: 'mongodb://heroku_7sbj3ftz:aeqrqhr7pdfa178ep41ohcnccg@ds157057.mlab.com:57057/heroku_7sbj3ftz'
+      options:
+        consistency: :strong
+        max_retries: 30
+        retry_interval: 1
+        timeout: 15
+        safe: true
+        refresh_interval: 10

@@ -1,0 +1,49 @@
+%main.main-container
+  .container
+    .row
+      .maps-contacts
+        #map
+    .row
+      .about-us__form
+        = form_with url: contacts_url, local: true do |f|
+          %h3.title-form Напишіть нам
+          .group
+            = f.text_field :first_name, { required: true }
+            %span.highlight
+            %span.bar
+            = f.label :first_name, 'Прізвище'
+          .group
+            = f.text_field :second_name, { required: true }
+            %span.highlight
+            %span.bar
+            = f.label :second_name,  'Ім\'я'
+          .group
+            = f.email_field :email, { required: true }
+            %span.highlight
+            %span.bar
+            = f.label :email, 'E-mail'
+          .group
+            = f.text_field :phone, { required: true }
+            %span.highlight
+            %span.bar
+            = f.label :phone, 'Телефон'
+          .group.textarea-container
+            = f.text_area :question, { required: true }
+            = f.label :question, 'Ваше питання', class: 'lebel-textarea'
+          .btn-box
+            = f.submit 'Відправити', class: 'btn btn-submit'
+%script{:crossorigin => "anonymous", :integrity => "sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=", :src => "https://code.jquery.com/jquery-3.2.1.min.js"}
+:javascript
+  function initMap() {
+
+      let atnu = {lat: 48.915827, lng: 24.711436};
+      let map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: atnu
+      });
+      let marker = new google.maps.Marker({
+          position: atnu,
+          map: map
+      });
+  }
+%script{:async => "", :defer => "defer", :src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyBR9hWhE7KItgdqZbFvsQpwDWwP9vLf1r0&callback=initMap"}
